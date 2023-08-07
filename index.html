@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        @media screen and (max-width:427px){
+            .container{
+                width:50%;
+            }
+        }
+        
+        .final{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            width: 50vw;
+        }
+        h2{
+            background-color:green;
+            color:white;
+            padding:20px;
+            margin:0px
+        }
+        textarea{
+            border:2px solid green;
+            overflow: scroll;
+            margin: 0px;
+            font-size: 14px;
+            
+        }
+        .sp{
+            background-color:rgb(1, 115, 1);
+            color:white;
+            padding:20px;
+            margin:0px;
+            font-weight: 300;
+            font-size: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="final">
+    <div class="container">
+
+         <h2>Word Counter</h2>
+         <textarea rows="20" cols="50" id="content"></textarea>
+         <div class="sp">
+         <span id="words">0</span> words and 
+         <span id="char">0</span> Characters.
+         </div>
+
+    </div>
+    </div>
+
+    <script>
+        let con=document.getElementById('content');
+        let character=document.getElementById('char');
+        let word=document.getElementById('words');
+
+        //to print number of characters
+        con.addEventListener('input',function(){
+            character.innerHTML=((this.value).length);
+        })
+
+        //to print number of words
+        
+        con.addEventListener('input',function(){
+            var word1=this.value;
+            word1=word1.trim();
+            let wordArray=word1.split(" ");
+            let cleanArray=wordArray.filter(function (e){
+                return e!="";
+            });
+            word.innerHTML=cleanArray.length;
+        })
+        
+        
+        
+    </script>
+</body>
+</html>
